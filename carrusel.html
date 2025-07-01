@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carrusel Termos GL Optimizado</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+
+<div class="relative overflow-hidden w-full max-w-4xl mx-auto rounded-xl shadow-lg h-[500px]">
+  <div id="carousel" class="flex transition-transform duration-700 ease-in-out h-full">
+    <div class="flex items-center justify-center w-full flex-shrink-0 h-full bg-white">
+      <img src="foto.png" alt="Termos colores" class="max-h-full object-contain">
+    </div>
+    <div class="flex items-center justify-center w-full flex-shrink-0 h-full bg-white">
+      <img src="termo azul a.png" alt="Termo azul" class="max-h-full object-contain">
+    </div>
+    <div class="flex items-center justify-center w-full flex-shrink-0 h-full bg-white">
+      <img src="termo dorado.png" alt="Termo dorado" class="max-h-full object-contain">
+    </div>
+    <div class="flex items-center justify-center w-full flex-shrink-0 h-full bg-white">
+      <img src="termo negro unico.png" alt="Termo negro" class="max-h-full object-contain">
+    </div>
+    <div class="flex items-center justify-center w-full flex-shrink-0 h-full bg-white">
+      <img src="termo unico plata.png" alt="Termo plata" class="max-h-full object-contain">
+    </div>
+    <div class="flex items-center justify-center w-full flex-shrink-0 h-full bg-white">
+      <img src="Termo unico rojo.png" alt="Termo rojo" class="max-h-full object-contain">
+    </div>
+  </div>
+
+  <button onclick="moverCarrusel(-1)" class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black/50 text-white text-3xl px-3 py-1 rounded-full hover:bg-black/70 z-10">❮</button>
+  <button onclick="moverCarrusel(1)" class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black/50 text-white text-3xl px-3 py-1 rounded-full hover:bg-black/70 z-10">❯</button>
+</div>
+
+<script>
+  const carrusel = document.getElementById('carousel');
+  const total = 6;
+  let index = 0;
+
+  function mostrarSlide(i) {
+    index = (i + total) % total;
+    carrusel.style.transform = `translateX(-${index * 100}%)`;
+  }
+
+  function moverCarrusel(dir) {
+    mostrarSlide(index + dir);
+    reiniciar();
+  }
+
+  let intervalo = setInterval(() => moverCarrusel(1), 3000);
+
+  function reiniciar() {
+    clearInterval(intervalo);
+    intervalo = setInterval(() => moverCarrusel(1), 3000);
+  }
+</script>
+
+</body>
+</html>
